@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class LoginPage extends WebPage {
 
+    public final static By alertBox = By.xpath("//div[@class='alert alert-danger']");
+
     public final static By usernameInput = By.xpath("//input[@id='username']");
     public final static By passwordInput = By.xpath("//input[@id='password']");
     public final static By loginButton = By.xpath("//button[@type='submit']");

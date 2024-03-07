@@ -5,14 +5,16 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import main.java.common.WebPage;
 import main.java.manager.SeleniumDriverManager;
+import main.java.utils.Log;
+import main.java.utils.SeleniumUtils;
 import main.java.views.HomePage;
 import main.java.views.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 import static main.java.utils.SeleniumUtils.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UISteps {
 
@@ -60,5 +62,11 @@ public class UISteps {
 
         assertTrue(elementNotVisible(HomePage.loginLink));
         assertTrue(elementNotVisible(HomePage.signupLink));
+    }
+
+    @Then("check presence of alert box containing message {string}")
+    public void checkPresenceOfAlertBoxContainingMessage(String msg) {
+        assertNotNull(getElement(LoginPage.alertBox));
+        assertEquals(msg, SeleniumUtils.getElement(LoginPage.alertBox).getText());
     }
 }

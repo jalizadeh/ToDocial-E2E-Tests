@@ -6,6 +6,11 @@ These set of tests focus on what a user is intended to see on front-end side of 
 ## Tools
 For all E2E test that will verify the DOM elements in the browser, Selenium is used
 
+## CI/CD
+To set up the CI/CD on Jenkins, after installing the [Cucumber Reports](https://plugins.jenkins.io/cucumber-reports/), follow the basic instructions and how to use.  
+
+It is suggested to create a `Freestyle` job (according to instructions), but also it is possible to set as `Post actions` in a pipeline. `Jenkinsfile` is 
+
 ## Environment
 All tests are aimed to be executed on **Production** environment. The design and implementation are started on environment **Test** and executed to make sure everything is fine as expected. On successful execution and at the end of project milestone, they are ported on environment **Production**.
 

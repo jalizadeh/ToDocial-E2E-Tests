@@ -13,9 +13,6 @@ public class WebPage {
     protected final String URL = "http://localhost:8089";
     protected WebDriver driver;
 
-    protected final By alertBox = By.xpath("//div[@class='alert alert-danger']");
-
-
     public WebPage(){
         this.driver = SeleniumDriverManager.getDriverInThreadLocal();
     }
