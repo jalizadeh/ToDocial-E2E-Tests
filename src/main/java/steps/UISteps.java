@@ -1,13 +1,11 @@
-package test.java.steps;
+package main.java.steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import main.java.common.WebPage;
 import main.java.manager.SeleniumDriverManager;
-import main.java.utils.Log;
 import main.java.utils.SeleniumUtils;
 import main.java.views.HomePage;
 import main.java.views.LoginPage;
@@ -29,6 +27,11 @@ public class UISteps {
     @After
     public void teardown(){
         SeleniumDriverManager.getDriverInThreadLocal().quit();
+    }
+
+    @Given("navigate to homepage")
+    public void navigateToPage() {
+        driver.get("http://localhost:8089/");
     }
 
     @Given("navigate to page {string}")

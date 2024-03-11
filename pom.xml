@@ -13,16 +13,38 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.16.1</selenium.version>
+        <selenide.version>6.17.2</selenide.version>
         <junit.version>5.10.1</junit.version>
         <cucumber.version>7.15.0</cucumber.version>
         <projectlombok.version>1.18.22</projectlombok.version>
         <bonigarciaWDM.version>5.6.3</bonigarciaWDM.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <assertj-core.version>3.25.3</assertj-core.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <jackson-databind.version>2.14.2</jackson-databind.version>
+        <awaitility.version>4.2.0</awaitility.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -83,6 +105,13 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
         </dependency>
 
     </dependencies>
