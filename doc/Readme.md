@@ -1,59 +1,19 @@
-# ToDocial E2E Tests
-These set of tests focus on what a user is intended to see on front-end side of the project and mimics a user's behavior on web site. Tests will cover essential parts and pages to make sure everything works and is showed as expected per requirements.
+# Test Scenarios & Cases
 
-> In order to focus only on E2E (UI) tests, this part of the project is developed in parallel to the project's core
+## TTS_A) Homepage
+1. Verify if anonymous user views default sections on Homepage
+    - Top menu items (Home/Login/Signup)
+    - Community section
+        - at least 1 user
+    - Recent activities
+        - at least 1 activity (todo)
+    - Footer (Copyright/Language)
 
-## Tools
-For all E2E test that will verify the DOM elements in the browser, Selenium is used
-
-## CI/CD
-To set up the CI/CD on Jenkins, after installing the [Cucumber Reports](https://plugins.jenkins.io/cucumber-reports/), follow the basic instructions and how to use.  
-
-It is suggested to create a `Freestyle` job (according to instructions), but also it is possible to set as `Post actions` in a pipeline. `Jenkinsfile` contains the pipeline.
-
-## Environment
-All tests are aimed to be executed on **Production** environment. The design and implementation are started on environment **Test** and executed to make sure everything is fine as expected. On successful execution and at the end of project milestone, they are ported on environment **Production**.
-
-> If a test is aimed for a specific environment, it will be mentioned explicitly
-
-## Browser
-For now, only Chrome is tested and later (due to missing implementation of Web Driver Manager), Firefox and Edge will be added.
-
-## UI
-- General components
-    - Top menu
-        - Anonymous user
-        - Logged in user
-            - Menu buttons
-            - Search
-        - Admin user
-    - Footer
-- Pages
-    - Homepage
-    - Todos
-        - User's todo
-        - Other's todo
-    - Gym
-        - Homepage
-        - Plan
-            - New plan
-            - Day
-        - Shop
-            - Homepage
-            - Product
-            - Cart
-    - Settings (Admin user)
-- Buttons
-- Links
-- Forms
-- Languages (EN / IT)
-
-
-## User Registration & Login
+## TTS_B) User Registration & Login
 1. Verify if a new user can register with valid details
     | #  | Input                      | Output                       | Test data |
     | --- | -------------------------- | ---------------------------- | --------- |
-    | [1.1](doc/1.1.md) | Valid user details         | Successful registration      |           |
+    | [1.1](cases/1.1.md) | Valid user details         | Successful registration      |           |
     | 1.2 | Invalid user details       | Registration failure         |           | 
     | 1.3 | Existing user details      | Registration failure         | an existing user |
     | 1.4 | Missing mandatory details  | Registration failure         |           |
@@ -69,9 +29,9 @@ For now, only Chrome is tested and later (due to missing implementation of Web D
 3. Verify if the user can log in with a valid email and password
     | #  | Status | Input                  | Output                   | Test data |
     | --- | --- | -----------------------| ------------------------ | --------- |
-    | [3.1](doc/3.1.md) | ✅ | Valid email/password   | Successful login         | an existing user |
-    | [3.2](doc/3.2.md) | ✅ | Invalid email/password | Login failure            |           |  |
-    | [3.3](doc/3.3.md) | ❕  | Missing email/password | Login failure            | | |
+    | [3.1](cases/3.1.md) | ✅ | Valid email/password   | Successful login         | an existing user |
+    | [3.2](cases/3.2.md) | ✅ | Invalid email/password | Login failure            |           |  |
+    | [3.3](cases/3.3.md) | ❕  | Missing email/password | Login failure            | | |
 
 4. Verify if the login functionality denies access with an invalid email/password
     | Input                  | Output                        |
