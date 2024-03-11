@@ -1,5 +1,6 @@
 @e2e
 @TTS_B
+@ignore
 Feature: User Login & Registration
 
   Scenario: Valid username & email

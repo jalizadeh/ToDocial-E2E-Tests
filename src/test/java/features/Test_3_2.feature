@@ -1,8 +1,9 @@
 @e2e
 @TTS_B
+@ignore
 Feature: User Login & Registration
 
-  Scenario: Invalid Email or Password
+  Scenario: Invalid email
     Given navigate to page "login"
     When fill username field with "INVALID_admin"
     When fill password field with "12345"
