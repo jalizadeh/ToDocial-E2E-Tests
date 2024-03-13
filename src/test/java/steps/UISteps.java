@@ -11,6 +11,7 @@ import main.java.utils.Log;
 import main.java.utils.SeleniumUtils;
 import main.java.views.HomePage;
 import main.java.views.LoginPage;
+import main.java.views.NavMenu;
 import org.openqa.selenium.WebDriver;
 
 import static main.java.utils.SeleniumUtils.*;
@@ -55,18 +56,21 @@ public class UISteps {
 
     @Then("check if has full access to top menu items")
     public void checkIfHasFullAccessToTopMenuItems() {
-        assertNotNull(getElement(HomePage.homeBtn));
-        assertNotNull(getElement(HomePage.meButton));
-        assertNotNull(getElement(HomePage.todoButton));
-        assertNotNull(getElement(HomePage.gymButton));
-
-        assertTrue(elementNotVisible(HomePage.loginLink));
-        assertTrue(elementNotVisible(HomePage.signupLink));
+        new NavMenu()
+                .checkIfTopMenuExistsForLoggedInUser()
+                .checkIfFooterExists();
     }
 
     @Then("check presence of alert box containing message {string}")
     public void checkPresenceOfAlertBoxContainingMessage(String msg) {
         assertNotNull(getElement(LoginPage.alertBox));
         assertEquals(msg, SeleniumUtils.getElement(LoginPage.alertBox).getText());
+    }
+
+    @Then("check top and bottom menu for anonymous user")
+    public void checkTopAndBottomMenuForAnonymousUser() {
+        new NavMenu()
+                .checkIfTopMenuExistsForAnonymousUser()
+                .checkIfFooterExists();
     }
 }

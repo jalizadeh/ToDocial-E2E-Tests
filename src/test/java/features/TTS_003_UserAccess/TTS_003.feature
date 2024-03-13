@@ -1,5 +1,7 @@
 @e2e
 @TTS_B
+
+# gathering all scenarios in one single feature file is to provide better view in Jenkins Cucumber report
 Feature: User Login
 
   Scenario: Valid username & email

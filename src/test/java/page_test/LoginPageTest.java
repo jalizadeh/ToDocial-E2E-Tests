@@ -3,6 +3,7 @@ package test.java.page_test;
 import main.java.common.WebPageTest;
 import main.java.views.HomePage;
 import main.java.views.LoginPage;
+import main.java.views.NavMenu;
 import org.junit.jupiter.api.*;
 
 import static main.java.utils.SeleniumUtils.refreshPage;
@@ -35,7 +36,7 @@ public class LoginPageTest extends WebPageTest {
                 .fillFields(USERNAME, PASSWORD)
                 .clickLoginButton();
 
-        new HomePage()
+        new NavMenu()
                 .checkIfTopMenuExistsForLoggedInUser();
     }
 
