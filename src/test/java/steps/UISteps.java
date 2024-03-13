@@ -73,4 +73,22 @@ public class UISteps {
                 .checkIfTopMenuExistsForAnonymousUser()
                 .checkIfFooterExists();
     }
+
+    @Then("user logs out")
+    public void userLogsOut() {
+        new NavMenu()
+                .logOut();
+    }
+
+    @Then("login fields are visible")
+    public void loginFieldsAreVisible() {
+        new LoginPage()
+                .checkIfElementsExist();
+    }
+
+    @Then("alert box should not be visible")
+    public void alertBoxShouldNotBeVisible() {
+        new LoginPage()
+                .alertBoxVisibility(false);
+    }
 }

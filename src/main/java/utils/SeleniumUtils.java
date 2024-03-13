@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 
+import static org.testng.Assert.assertNotNull;
+
 public class SeleniumUtils {
 
     private static final int TIMEOUT_WAIT = 20; // in seconds
@@ -18,6 +20,11 @@ public class SeleniumUtils {
 
     public static void refreshPage(){
         SeleniumDriverManager.getDriverInThreadLocal().navigate().refresh();
+    }
+
+    public static void click(By by){
+        assertNotNull(getElement(by));
+        getElement(by).click();
     }
 
     public static void writeText(By by, String text) {

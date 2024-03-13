@@ -5,8 +5,7 @@ import main.java.common.WebPage;
 import main.java.utils.SeleniumUtils;
 import org.openqa.selenium.By;
 
-import static main.java.utils.SeleniumUtils.elementNotVisible;
-import static main.java.utils.SeleniumUtils.getElement;
+import static main.java.utils.SeleniumUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NavMenu extends WebPage {
@@ -28,7 +27,11 @@ public class NavMenu extends WebPage {
     public final static By navItemCalendar = By.xpath("//li[@id='navItemCalendar']");
     public final static By navItemExperience = By.xpath("//li[@id='navItemExperience']");
     public final static By navItemShop = By.xpath("//li[@id='navItemShop']");
+
     public final static By navItemUser = By.xpath("//li[@id='navItemUser']");
+    public final static By navItemUser_LogoutBtn = By.xpath("//li[@id='navItemUser']//a[@href='/logout']");
+
+
     public final static By navItemSettings = By.xpath("//li[@id='navItemSettings']");
 
 
@@ -40,7 +43,7 @@ public class NavMenu extends WebPage {
     public final static By footer_language_it = By.xpath("//a[@id='langEN']");
 
     public NavMenu() {
-        driver.get(URL);
+        //driver.get(URL);
     }
 
     public NavMenu checkIfTopMenuExistsForAnonymousUser() {
@@ -80,4 +83,9 @@ public class NavMenu extends WebPage {
         return this;
     }
 
+    public NavMenu logOut() {
+        click(navItemUser);
+        click(navItemUser_LogoutBtn);
+        return this;
+    }
 }

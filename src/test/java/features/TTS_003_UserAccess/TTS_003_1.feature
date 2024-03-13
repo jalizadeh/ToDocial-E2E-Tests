@@ -1,5 +1,5 @@
 @e2e
-@TTS_B
+@TTS_003
 
 # gathering all scenarios in one single feature file is to provide better view in Jenkins Cucumber report
 Feature: User Login
