@@ -1,12 +1,11 @@
 package main.java.views;
 
-import io.cucumber.java.en.Then;
 import main.java.common.WebPage;
-import main.java.utils.SeleniumUtils;
 import org.openqa.selenium.By;
 
 import static main.java.utils.SeleniumUtils.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class NavMenu extends WebPage {
 
@@ -47,39 +46,42 @@ public class NavMenu extends WebPage {
     }
 
     public NavMenu checkIfTopMenuExistsForAnonymousUser() {
-        assertNotNull(getElementBy(homeBtn));
-        assertNotNull(getElementBy(loginLink));
-        assertNotNull(getElementBy(signupLink));
+        shouldBeVisibleBy(homeBtn);
+        shouldBeVisibleBy(loginLink);
+        shouldBeVisibleBy(signupLink);
         return this;
     }
 
-    public NavMenu checkIfTopMenuExistsForLoggedInUser() {
-        assertTrue(elementNotVisible(loginLink));
-        assertTrue(elementNotVisible(signupLink));
+    public NavMenu checkIfTopMenuExistsForLoggedInUser(String accessType) {
+        shouldNotBeVisibleBy(loginLink);
+        shouldNotBeVisibleBy(signupLink);
 
-        assertNotNull(getElementBy(homeBtn));
-        assertNotNull(getElementBy(meButton));
-        assertNotNull(getElementBy(todoButton));
-        assertNotNull(getElementBy(gymButton));
-        assertNotNull(getElementBy(searchForm));
-        assertNotNull(getElementBy(navItemTodos));
-        assertNotNull(getElementBy(navItemGym));
-        assertNotNull(getElementBy(navItemDiary));
-        assertNotNull(getElementBy(navItemPLCT));
-        assertNotNull(getElementBy(navItemCalendar));
-        assertNotNull(getElementBy(navItemExperience));
-        assertNotNull(getElementBy(navItemShop));
-        assertNotNull(getElementBy(navItemUser));
-        assertNotNull(getElementBy(navItemSettings));
+        shouldBeVisibleBy(homeBtn);
+        shouldBeVisibleBy(meButton);
+        shouldBeVisibleBy(todoButton);
+        shouldBeVisibleBy(gymButton);
+        shouldBeVisibleBy(searchForm);
+        shouldBeVisibleBy(navItemTodos);
+        shouldBeVisibleBy(navItemGym);
+        shouldBeVisibleBy(navItemDiary);
+        shouldBeVisibleBy(navItemPLCT);
+        shouldBeVisibleBy(navItemCalendar);
+        shouldBeVisibleBy(navItemExperience);
+        shouldBeVisibleBy(navItemShop);
+        shouldBeVisibleBy(navItemUser);
+
+        if(accessType.equals("admin"))
+            shouldBeVisibleBy(navItemSettings);
+
         return this;
     }
 
     public NavMenu checkIfFooterExists() {
-        assertNotNull(getElementBy(footer));
-        assertEquals("© 2020-2024 ToDocial", getElementBy(footer_copyright).getText());
-        assertNotNull(getElementBy(footer_language));
-        assertNotNull(getElementBy(footer_language_en));
-        assertNotNull(getElementBy(footer_language_it));
+        shouldBeVisibleBy(footer);
+        hasTextBy(footer_copyright, "© 2020-2024 ToDocial");
+        shouldBeVisibleBy(footer_language);
+        shouldBeVisibleBy(footer_language_en);
+        shouldBeVisibleBy(footer_language_it);
         return this;
     }
 

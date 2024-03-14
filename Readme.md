@@ -17,6 +17,10 @@ The framework should make test development easy so the developer should only foc
 
 > The step method structure follows the step definition, but in `SeleniumUtils`, it always follow `(String page, String element, <other parameters>)`
 
+**Dos and Don'ts**
+- Try not to use `JUnit Assertions` directly in the views, instead define a method (that has full access to other low-level methods and assertions) in `SeleniumUtils`. Always think in *repeatability* of your solution
+
+
 ## Tools
 For all E2E test that will verify the DOM elements in the browser, Selenium is used
 

@@ -20,13 +20,14 @@
     | 2.1.2 | Invalid user details       | Registration failure         |           | 
     | 2.1.3 | Existing user details      | Registration failure         | an existing user |
     | 2.1.4 | Missing mandatory details  | Registration failure         |           |
+    | 2.1.5 | Disabled Registration  | Registration of new users is disabled via Settings panel |           |
 
 ## TTS_003) User Accesses
 1. User login
     | #  | Status | Input                  | Output                   | Test data |
     | --- | --- | -----------------------| ------------------------ | --------- |
     | [3.1.1](cases/3.1.md) | ✅ | Valid email/password | Successful login<br>User has access to more menu items:<ul><li>Home btn</li><li>Me btn</li><li>Todos btn</li><li>Gym btn</li><li>Search bar (complete component)</li><li>Todos (complete component)</li><li>Gym (complete component)</li><li>Diary</li><li>Personal Life Cycle Test</li><li>Calendar</li><li>Experience</li><li>Shop btn</li><li>Account btn (complete component)</li><li>Settings btn</li></ul> | admin user |
-    | [3.1.2](cases/3.2.md) | ✅ | Valid email/password   | all 3.1 except:<br><ul><li>Settings btn</li></ul> | a regular user |
+    | [3.1.2](cases/3.2.md) | ✅ | Valid email/password   | all 3.1 except:<br><ul><li>Settings btn</li></ul> | a regular (any except admin) user |
     | [3.1.3](cases/3.3.md) | ✅ | Invalid email/password | Login failure            |           |  |
     | [3.1.4](cases/3.4.md) | ❕  | Missing email/password | Login failure            | | |
 
@@ -39,9 +40,9 @@
 3. Forgot Password
     | Input               | Output                              |
     | --------------------| ----------------------------------- |
-    | Valid email address | Password reset email sent           |
-    | Invalid email       | Error message (invalid email)       |
-    | Missing email       | Error message (missing email)       |
+    | [3.3.1] ✅ Valid email address | Password reset email sent           |
+    | [3.3.2] ✅ Invalid email       | Error message (invalid email)       |
+    | [3.3.3] ❕ Missing email       | Error message (missing email)       |
 
 4. Remember me
     | Input             | Output                       |
@@ -51,4 +52,10 @@
 
 
 
-## TTS_00X) User Permissions
+## TTS_00X) 
+- User Permissions
+- User's Public Page
+- Todos Page
+- Gym Page
+- Search & Result page
+- 

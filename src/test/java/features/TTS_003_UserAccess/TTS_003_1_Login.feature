@@ -4,14 +4,23 @@
 # gathering all scenarios in one single feature file is to provide better view in Jenkins Cucumber report
 Feature: User Login
 
-  Scenario: Valid username & email
+  Scenario: Valid username & email (admin user)
     Given navigate to page "login"
     When write "admin" into LoginPage.usernameInput
     When write "12345" into LoginPage.passwordInput
     When click LoginPage.loginButton
 
     # redirected to Home page
-    Then check if has full access to top menu items
+    Then user has "admin" access to top menu items
+
+  Scenario: Valid username & email (regular user)
+    Given navigate to page "login"
+    When write "mr.editor" into LoginPage.usernameInput
+    When write "12345" into LoginPage.passwordInput
+    When click LoginPage.loginButton
+
+    # redirected to Home page
+    Then user has "regular" access to top menu items
 
   Scenario: Invalid email
     Given navigate to page "login"

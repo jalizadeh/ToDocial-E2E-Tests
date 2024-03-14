@@ -3,10 +3,20 @@
 
 Feature: Homepage
 
-  Scenario: Verify elements presence for anonymous user
+  Scenario Outline: Verify elements presence for anonymous user
     Given navigate to page ""
     Then check top and bottom menu for anonymous user
-    #Then check contents in the middle
+
+    # checking contents in the middle
+    Then HomePage.columnCommunity should be visible
+    Then community user <fullname> with id <username> is in the list
+    Then HomePage.columnRecentActivities should be visible
+
+    Examples:
+      | fullname                    | username      |
+      | Javad Alizadeh              | admin         |
+      | Alex Fergosen [EDITOR]      | mr.editor     |
+      | Micheal J. Jackson [USER]   | mjackson.user |
 
   Scenario: Verify elements presence for logged in user
     Given navigate to page "login"
@@ -15,5 +25,15 @@ Feature: Homepage
     When click LoginPage.loginButton
 
     # redirected to Home page
-    Then check if has full access to top menu items
-    #Then check contents in the middle
+    Then user has "admin" access to top menu items
+
+    # checking contents in the middle
+    Then HomePage.columnCommunity should be visible
+    Then community user <fullname> with id <username> is in the list
+    Then HomePage.columnRecentActivities should be visible
+
+    Examples:
+      | fullname                    | username      |
+      | Javad Alizadeh              | admin         |
+      | Alex Fergosen [EDITOR]      | mr.editor     |
+      | Micheal J. Jackson [USER]   | mjackson.user |

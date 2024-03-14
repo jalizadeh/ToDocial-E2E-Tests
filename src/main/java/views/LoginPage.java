@@ -27,9 +27,9 @@ public class LoginPage extends WebPage {
     }
 
     public LoginPage checkIfElementsExist(){
-        assertNotNull(getElementBy(usernameInput));
-        assertNotNull(getElementBy(passwordInput));
-        assertNotNull(getElementBy(loginButton));
+        shouldBeVisibleBy(usernameInput);
+        shouldBeVisibleBy(passwordInput);
+        shouldBeVisibleBy(loginButton);
         return this;
     }
 
@@ -40,12 +40,12 @@ public class LoginPage extends WebPage {
     }
 
     public LoginPage clickLoginButton(){
-        getElementBy(loginButton).click();
+        click(loginButton);
         return this;
     }
 
     public LoginPage alertBoxHasMsg(String msg){
-        assertEquals(msg, getElementBy(alertBox).getText());
+        hasTextBy(alertBox, msg);
         return this;
     }
 

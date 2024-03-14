@@ -47,15 +47,28 @@ public class SeleniumUtils {
 
     public static void pageElementHasText(String page, String element, String text) {
         WebElement pageElement = getPageElement(page, element);
-        assertEquals(pageElement.getText(), text);
+        assertEquals(text, pageElement.getText());
+    }
+
+    public static void hasTextBy(By element, String text) {
+        WebElement pageElement = getElementBy(element);
+        assertEquals(text, pageElement.getText());
     }
 
     public static void pageElementShouldBeVisible(String page, String element) {
         assertNotNull(getPageElement(page, element));
     }
 
+    public static void shouldBeVisibleBy(By element) {
+        assertNotNull(getElementBy(element));
+    }
+
     public static void pageElementShouldNotBeVisible(String page, String element) {
         assertTrue(elementNotVisible(findPageElement(page, element)));
+    }
+
+    public static void shouldNotBeVisibleBy(By element) {
+        assertTrue(elementNotVisible(element));
     }
 
     public static WebElement getPageElement(String page, String element){

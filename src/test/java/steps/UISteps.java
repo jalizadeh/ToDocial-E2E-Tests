@@ -49,10 +49,10 @@ public class UISteps {
     }
 
 
-    @Then("check if has full access to top menu items")
-    public void checkIfHasFullAccessToTopMenuItems() {
+    @Then("user has {string} access to top menu items")
+    public void userAccessToTopMenuItems(String accessType) {
         new NavMenu()
-                .checkIfTopMenuExistsForLoggedInUser()
+                .checkIfTopMenuExistsForLoggedInUser(accessType)
                 .checkIfFooterExists();
     }
 
@@ -99,4 +99,10 @@ public class UISteps {
     public void hasText(String page, String element, String text) {
         pageElementHasText(page, element, text);
     }
+
+    @Then("community user {} with id {} is in the list")
+    public void communityUserUserWithUsernameIsInTheList(String fullname, String username) {
+        new HomePage().checkUser(fullname, username);
+    }
+
 }
