@@ -7,7 +7,7 @@ import main.java.common.CucumberTestNGRunner;
 @CucumberOptions(
         plugin={"pretty", "html:target/cucumber", "json:target/cucumber.json"},
         features = "src/test/java/features",
-        glue={"test.java.steps"},
+        glue={"test.java.steps", "main.java.common.Hook"},
         tags = "not @ignore" //fast solution to skip (do not count) specified tests
 )
 public class TestRunner extends CucumberTestNGRunner {

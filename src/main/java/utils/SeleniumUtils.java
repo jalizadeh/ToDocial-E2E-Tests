@@ -1,6 +1,7 @@
 package main.java.utils;
 
 import main.java.manager.SeleniumDriverManager;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +11,8 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 
-import static org.testng.Assert.assertNotNull;
+import static main.java.manager.PageElementFinder.findPageElement;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SeleniumUtils {
 
@@ -22,18 +24,45 @@ public class SeleniumUtils {
         SeleniumDriverManager.getDriverInThreadLocal().navigate().refresh();
     }
 
+    public static void clickPageElement(String page, String element){
+        getPageElement(page, element).click();
+    }
+
     public static void click(By by){
-        assertNotNull(getElement(by));
-        getElement(by).click();
+        assertNotNull(getElementBy(by));
+        getElementBy(by).click();
     }
 
     public static void writeText(By by, String text) {
-        WebElement element = getElement(by);
+        WebElement element = getElementBy(by);
         element.clear();
         element.sendKeys(text);
     }
 
-    public static WebElement getElement(By by) {
+    public static void writeTextIntoPageElement(String page, String element, String text) {
+        WebElement pageElement = getPageElement(page, element);
+        pageElement.clear();
+        pageElement.sendKeys(text);
+    }
+
+    public static void pageElementHasText(String page, String element, String text) {
+        WebElement pageElement = getPageElement(page, element);
+        assertEquals(pageElement.getText(), text);
+    }
+
+    public static void pageElementShouldBeVisible(String page, String element) {
+        assertNotNull(getPageElement(page, element));
+    }
+
+    public static void pageElementShouldNotBeVisible(String page, String element) {
+        assertTrue(elementNotVisible(findPageElement(page, element)));
+    }
+
+    public static WebElement getPageElement(String page, String element){
+        return getElementBy(findPageElement(page, element));
+    }
+    
+    public static WebElement getElementBy(By by) {
         return waitForElement(by);
     }
 

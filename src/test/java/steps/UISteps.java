@@ -2,18 +2,23 @@ package test.java.steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import main.java.common.WebPage;
+import main.java.manager.PageElementFinder;
 import main.java.manager.SeleniumDriverManager;
 import main.java.utils.Log;
 import main.java.utils.SeleniumUtils;
 import main.java.views.HomePage;
 import main.java.views.LoginPage;
 import main.java.views.NavMenu;
+import org.junit.jupiter.api.Assumptions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static main.java.manager.PageElementFinder.findPageElement;
 import static main.java.utils.SeleniumUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,6 +32,12 @@ public class UISteps {
         driver = SeleniumDriverManager.getDriverInThreadLocal();
     }
 
+    // custom tag to be used to intentionally skip feature or scenarios
+    @Before("@ignore")
+    public void skip_scenario(Scenario scenario){
+        Assumptions.assumeTrue(false);
+    }
+
     @After
     public void teardown(){
         SeleniumDriverManager.getDriverInThreadLocal().quit();
@@ -38,33 +49,11 @@ public class UISteps {
     }
 
 
-    @When("fill username field with {string}")
-    public void fillUsernameFieldWith(String username) {
-        writeText(LoginPage.usernameInput, username);
-    }
-
-    @When("fill password field with {string}")
-    public void fillPasswordFieldWith(String password) {
-        writeText(LoginPage.passwordInput, password);
-    }
-
-    @When("click login button")
-    public void clickLoginButton() {
-        getElement(LoginPage.loginButton).click();
-    }
-
-
     @Then("check if has full access to top menu items")
     public void checkIfHasFullAccessToTopMenuItems() {
         new NavMenu()
                 .checkIfTopMenuExistsForLoggedInUser()
                 .checkIfFooterExists();
-    }
-
-    @Then("check presence of alert box containing message {string}")
-    public void checkPresenceOfAlertBoxContainingMessage(String msg) {
-        assertNotNull(getElement(LoginPage.alertBox));
-        assertEquals(msg, SeleniumUtils.getElement(LoginPage.alertBox).getText());
     }
 
     @Then("check top and bottom menu for anonymous user")
@@ -86,9 +75,28 @@ public class UISteps {
                 .checkIfElementsExist();
     }
 
-    @Then("alert box should not be visible")
-    public void alertBoxShouldNotBeVisible() {
-        new LoginPage()
-                .alertBoxVisibility(false);
+    @Then("{}.{} should be visible")
+    public void shouldBeVisible(String page, String element) {
+        pageElementShouldBeVisible(page, element);
+    }
+
+    @Then("{}.{} should not be visible")
+    public void shouldNotBeVisible(String page, String element) {
+        pageElementShouldNotBeVisible(page, element);
+    }
+
+    @When("click {}.{}")
+    public void click(String page, String element) {
+        clickPageElement(page, element);
+    }
+
+    @When("write {string} into {}.{}")
+    public void writeText(String text, String page, String element) {
+        writeTextIntoPageElement(page, element, text);
+    }
+
+    @Then("{}.{} has text {string}")
+    public void hasText(String page, String element, String text) {
+        pageElementHasText(page, element, text);
     }
 }

@@ -3,6 +3,20 @@ These set of tests focus on what a user is intended to see on front-end side of 
 
 > In order to focus only on E2E (UI) tests, this part of the project is developed in parallel to the project's core
 
+## Framework features
+The framework should make test development easy so the developer should only focus on the implementation rather than inventing new solution. Framework should provide all basic features for:
+- finding an element
+- checking visibility/invisibility
+- checking text (equal / contains)
+- checking element's focus/status
+- clicking (all kind of interactions)
+- navigation and redirection
+- download/upload management
+
+> In `UIStep` class, the step method name is straight-forward, without pointing to `PageElement`, while the details are implemented and managed in `SeleniumUtils`
+
+> The step method structure follows the step definition, but in `SeleniumUtils`, it always follow `(String page, String element, <other parameters>)`
+
 ## Tools
 For all E2E test that will verify the DOM elements in the browser, Selenium is used
 

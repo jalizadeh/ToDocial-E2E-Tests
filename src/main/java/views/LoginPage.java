@@ -15,15 +15,21 @@ public class LoginPage extends WebPage {
     public final static By usernameInput = By.xpath("//input[@id='username']");
     public final static By passwordInput = By.xpath("//input[@id='password']");
     public final static By loginButton = By.xpath("//button[@type='submit']");
+    public final static By forgotPassLink = By.xpath("//a[@href='/forgot-password']");
+
+    //Forgot Password Page
+    public final static By fpEmailInput = By.xpath("//input[@id='email']");
+    public final static By fpSubmitButton = loginButton;
+
 
     public LoginPage() {
         //driver.get(URL + "/login");
     }
 
     public LoginPage checkIfElementsExist(){
-        assertNotNull(getElement(usernameInput));
-        assertNotNull(getElement(passwordInput));
-        assertNotNull(getElement(loginButton));
+        assertNotNull(getElementBy(usernameInput));
+        assertNotNull(getElementBy(passwordInput));
+        assertNotNull(getElementBy(loginButton));
         return this;
     }
 
@@ -34,20 +40,13 @@ public class LoginPage extends WebPage {
     }
 
     public LoginPage clickLoginButton(){
-        getElement(loginButton).click();
+        getElementBy(loginButton).click();
         return this;
     }
 
     public LoginPage alertBoxHasMsg(String msg){
-        assertEquals(msg, getElement(alertBox).getText());
+        assertEquals(msg, getElementBy(alertBox).getText());
         return this;
     }
 
-    public LoginPage alertBoxVisibility(boolean shouldBeVisible) {
-        if(shouldBeVisible)
-            assertNotNull(getElement(alertBox));
-        else
-            assertTrue(elementNotVisible(alertBox));
-        return this;
-    }
 }

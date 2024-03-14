@@ -47,9 +47,9 @@ public class NavMenu extends WebPage {
     }
 
     public NavMenu checkIfTopMenuExistsForAnonymousUser() {
-        assertNotNull(getElement(homeBtn));
-        assertNotNull(getElement(loginLink));
-        assertNotNull(getElement(signupLink));
+        assertNotNull(getElementBy(homeBtn));
+        assertNotNull(getElementBy(loginLink));
+        assertNotNull(getElementBy(signupLink));
         return this;
     }
 
@@ -57,29 +57,29 @@ public class NavMenu extends WebPage {
         assertTrue(elementNotVisible(loginLink));
         assertTrue(elementNotVisible(signupLink));
 
-        assertNotNull(getElement(homeBtn));
-        assertNotNull(getElement(meButton));
-        assertNotNull(getElement(todoButton));
-        assertNotNull(getElement(gymButton));
-        assertNotNull(getElement(searchForm));
-        assertNotNull(getElement(navItemTodos));
-        assertNotNull(getElement(navItemGym));
-        assertNotNull(getElement(navItemDiary));
-        assertNotNull(getElement(navItemPLCT));
-        assertNotNull(getElement(navItemCalendar));
-        assertNotNull(getElement(navItemExperience));
-        assertNotNull(getElement(navItemShop));
-        assertNotNull(getElement(navItemUser));
-        assertNotNull(getElement(navItemSettings));
+        assertNotNull(getElementBy(homeBtn));
+        assertNotNull(getElementBy(meButton));
+        assertNotNull(getElementBy(todoButton));
+        assertNotNull(getElementBy(gymButton));
+        assertNotNull(getElementBy(searchForm));
+        assertNotNull(getElementBy(navItemTodos));
+        assertNotNull(getElementBy(navItemGym));
+        assertNotNull(getElementBy(navItemDiary));
+        assertNotNull(getElementBy(navItemPLCT));
+        assertNotNull(getElementBy(navItemCalendar));
+        assertNotNull(getElementBy(navItemExperience));
+        assertNotNull(getElementBy(navItemShop));
+        assertNotNull(getElementBy(navItemUser));
+        assertNotNull(getElementBy(navItemSettings));
         return this;
     }
 
     public NavMenu checkIfFooterExists() {
-        assertNotNull(getElement(footer));
-        assertEquals("© 2020-2024 ToDocial", getElement(footer_copyright).getText());
-        assertNotNull(getElement(footer_language));
-        assertNotNull(getElement(footer_language_en));
-        assertNotNull(getElement(footer_language_it));
+        assertNotNull(getElementBy(footer));
+        assertEquals("© 2020-2024 ToDocial", getElementBy(footer_copyright).getText());
+        assertNotNull(getElementBy(footer_language));
+        assertNotNull(getElementBy(footer_language_en));
+        assertNotNull(getElementBy(footer_language_it));
         return this;
     }
 
