@@ -23,6 +23,7 @@ public class CucumberTestNGRunner extends SeleniumDriverManager {
         Properties p = new Properties();
         try {
             p.load(is);
+            Log.info("Executing tests with " + p.getProperty("threadcount") + " threads");
         }
         catch (NullPointerException e){
             Log.info("No driver was defined. Chrome is selected by default.");

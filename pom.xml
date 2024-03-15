@@ -20,6 +20,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+
+        <threadcount>3</threadcount>
     </properties>
 
     <dependencies>
@@ -89,6 +91,7 @@
 
     <build>
         <sourceDirectory>src</sourceDirectory>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -97,6 +100,28 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>${threadcount}</value>
+                        </property>
+
+                        <configurationParameters>
+                            junit.jupiter.execution.parallel.enabled=true
+                            junit.jupiter.execution.parallel.config.strategy=fixed
+                            junit.jupiter.execution.parallel.config.fixed.parallelism=${threadcount}
+                            junit.jupiter.execution.parallel.mode.default = same_thread
+                            junit.jupiter.execution.parallel.mode.classes.default = concurrent
+                        </configurationParameters>
+                    </properties>
                 </configuration>
             </plugin>
 
