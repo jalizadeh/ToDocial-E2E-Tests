@@ -10,6 +10,7 @@ The framework should make test development easy so the developer should only foc
 - checking text (equal / contains)
 - checking element's focus/status
 - clicking (all kind of interactions)
+- counting elements
 - navigation and redirection
 - download/upload management
 

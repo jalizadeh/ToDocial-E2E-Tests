@@ -11,6 +11,7 @@ Feature: Homepage
     Then HomePage.columnCommunity should be visible
     Then community user <fullname> with id <username> is in the list
     Then HomePage.columnRecentActivities should be visible
+    Then HomePage.columnRecentActivities_Items size is "more" than 2
 
     Examples:
       | fullname                    | username      |
@@ -18,7 +19,7 @@ Feature: Homepage
       | Alex Fergosen [EDITOR]      | mr.editor     |
       | Micheal J. Jackson [USER]   | mjackson.user |
 
-  Scenario: Verify elements presence for logged in user
+  Scenario Outline: Verify elements presence for logged in user
     Given navigate to page "login"
     When write "admin" into LoginPage.usernameInput
     When write "12345" into LoginPage.passwordInput
@@ -30,7 +31,7 @@ Feature: Homepage
     # checking contents in the middle
     Then HomePage.columnCommunity should be visible
     Then community user <fullname> with id <username> is in the list
-    Then HomePage.columnRecentActivities should be visible
+    Then HomePage.columnRecentActivities_Items size is "more" than 2
 
     Examples:
       | fullname                    | username      |

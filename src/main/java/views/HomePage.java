@@ -12,6 +12,7 @@ public class HomePage extends WebPage {
 
     public final static By columnCommunity = By.id("col-community");
     public final static By columnRecentActivities = By.id("col-recent-activities");
+    public final static By columnRecentActivities_Items = By.xpath("//div[@id='col-recent-activities']//div[@class='my-2']");
 
     public void checkUser(String fullname, String username) {
         By userImg = By.xpath("//div[@id='col-community']//a[@href='/@" + username + "'][1]//img");

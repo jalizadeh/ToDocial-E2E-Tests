@@ -105,4 +105,8 @@ public class UISteps {
         new HomePage().checkUser(fullname, username);
     }
 
+    @Then("{}.{} size is {string} than {int}")
+    public void homepageColumnRecentActivities_ItemsSizeIsThan(String page, String element, String operator, int value) {
+        pageElementHasItems(page, element, operator, value);
+    }
 }
