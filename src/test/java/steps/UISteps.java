@@ -6,24 +6,19 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import main.java.common.WebPage;
-import main.java.manager.PageElementFinder;
 import main.java.manager.SeleniumDriverManager;
-import main.java.utils.Log;
-import main.java.utils.SeleniumUtils;
+import main.java.utils.DataProvider;
 import main.java.views.HomePage;
 import main.java.views.LoginPage;
 import main.java.views.NavMenu;
 import org.junit.jupiter.api.Assumptions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static main.java.manager.PageElementFinder.findPageElement;
 import static main.java.utils.SeleniumUtils.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class UISteps {
 
+    private DataProvider dataProvider = DataProvider.getInstance();
     private WebDriver driver;
 
     @Before
@@ -43,9 +38,20 @@ public class UISteps {
         SeleniumDriverManager.getDriverInThreadLocal().quit();
     }
 
+
+    @Given("navigate to homepage")
+    public void navigateToHomepage() {
+        driver.get(dataProvider.homepage());
+    }
+
     @Given("navigate to page {string}")
-    public void navigateToPage(String url) {
-        driver.get("http://localhost:8089/" + url);
+    public void navigateToPage(String page) {
+        driver.get(dataProvider.page(page));
+    }
+
+    @Given("navigate to url {string}")
+    public void navigateToUrl(String url) {
+        driver.get(url);
     }
 
 

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SeleniumUtils {
 
-    private static final int TIMEOUT_WAIT = 20; // in seconds
+    private static final int TIMEOUT_WAIT = 10; // in seconds
     private static final int TIMEOUT_POLLING = 250; // in milliseconds
 
 
@@ -129,8 +129,8 @@ public class SeleniumUtils {
     public static void waitForNotVisibleElement(By by) {
         FluentWait<WebDriver> fluentWait = new FluentWait<>(
                 SeleniumDriverManager.getDriverInThreadLocal())
-                .withTimeout(Duration.ofSeconds(20))
-                .pollingEvery(Duration.ofMillis(500))
+                .withTimeout(Duration.ofSeconds(TIMEOUT_WAIT))
+                .pollingEvery(Duration.ofMillis(TIMEOUT_POLLING))
                 .ignoring(NoSuchElementException.class);
         fluentWait.until(ExpectedConditions.invisibilityOfElementLocated(by));
     }

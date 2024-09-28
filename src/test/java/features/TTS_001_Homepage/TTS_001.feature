@@ -4,7 +4,7 @@
 Feature: Homepage
 
   Scenario Outline: Verify elements presence for anonymous user
-    Given navigate to page ""
+    Given navigate to homepage
     Then check top and bottom menu for anonymous user
 
     # checking contents in the middle

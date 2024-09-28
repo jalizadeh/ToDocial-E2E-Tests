@@ -25,7 +25,13 @@ public class SeleniumDriverManager {
         prefs.put("profile", profile);
         chromeOptions.setExperimentalOption("prefs", prefs);
         chromeOptions.setCapability("acceptInsecureCerts", true); // Allows WebDriver to accept insecure certificates
-        chromeOptions.addArguments("--incognito","--disable-gpu", "--window-size=1920,1080", "--ignore-certificate-errors", "--disable-popup-blocking");
+        chromeOptions.addArguments("--incognito");
+        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--window-size=1920,1080");
+        chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--disable-popup-blocking");
+        chromeOptions.addArguments("--disable-search-engine-choice-screen");
+
 
         //driver.manage().window().maximize();
         //driver.manage().timeouts().pageLoadTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS);
